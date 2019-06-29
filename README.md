@@ -23,25 +23,25 @@ Filters are used to select Entities. Filters are just a simple Lua function that
 An API overview is available [here](API.md)
 
 ## Example
+
 ```lua
 local ecs = require 'ecs'
 
 local talkingSystem = ecs.newSystem()
 
 function talkingSystem:filter(e)
-	return e.name ~= nil and e.mass ~= nil and e.phrase ~= nil
+	return e.name ~= nil and e.mass ~= nil
 end
 
 function talkingSystem:process(e, dt)
 	for _, e in ipairs(self.entities) do
 		e.mass = e.mass + dt * 3
-		print(("%s who weighs %d pounds, says %q."):format(e.name, e.mass, e.phrase)
+		print(("%s who weighs %d pounds"):format(e.name, e.mass)
 	end
 end
 
 local joe = {
     name = "Joe",
-    phrase = "I'm a plumber.",
     mass = 150,
     hairColor = "brown"
 }
