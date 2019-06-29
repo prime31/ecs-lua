@@ -50,7 +50,7 @@ There is another option to (hopefully) increase performance in systems that have
   * Noncached systems cannot be sorted (There is no entities list to sort).
 
 
-#### Methods
+#### Creating Systems
 
 `function ecs.newSystem(table)`
 - Creates a new System or System class. Systems have a process method called each tick.
