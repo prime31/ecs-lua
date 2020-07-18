@@ -351,7 +351,7 @@ function World:update(dt, filter)
 			
 			local preUpdate = system.preUpdate
 			if preUpdate and
-				((not filter) or filter(world, system)) then
+				((not filter) or filter(self, system)) then
 				preUpdate(system, dt)
 			end
 		end
@@ -360,7 +360,7 @@ function World:update(dt, filter)
 	--  Iterate through Systems IN ORDER
 	for i = 1, #systems do
 		local system = systems[i]
-		if system.active and ((not filter) or filter(world, system)) then
+		if system.active and ((not filter) or filter(self, system)) then
 			-- Update Systems that have an update method (most Systems)
 			local update = system.update
 			if update then
@@ -386,7 +386,7 @@ function World:update(dt, filter)
 		local system = systems[i]
 		local postUpdate = system.postUpdate
 		if postUpdate and system.active and
-			((not filter) or filter(world, system)) then
+			((not filter) or filter(self, system)) then
 			postUpdate(system, dt)
 		end
 	end
